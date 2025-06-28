@@ -31,6 +31,10 @@ export default function Skills() {
     { name: "Google Analytics", logo: "/logo/googleanalytics.svg" },
     { name: "Matplotlib", logo: "/logo/matplotlib.svg" },
     { name: "Figma", logo: "/logo/figma.svg" },
+    { name: "Spring Boot", logo: "/logo/springboot.svg" },
+    { name: "Django", logo: "/logo/django.svg" },
+    { name: "Postman", logo: "/logo/postman.svg" },
+
   ]
 
   useEffect(() => {

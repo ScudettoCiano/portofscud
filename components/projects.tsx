@@ -472,7 +472,6 @@ export default function Projects() {
                           size="sm"
                           className="flex-1 bg-slate-700/50 text-slate-300 border-slate-600 hover:border-slate-500 hover:text-white text-xs sm:text-sm"
                         >
-                          <LinkIcon className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                           View Details
                         </Button>
                       </DialogTrigger>
@@ -537,6 +536,13 @@ export default function Projects() {
                               </Button>
                             </div>
                           )}
+                          {!project.githubUrl && (
+                            <div className="text-center py-4 px-6 border border-slate-700 rounded-lg bg-slate-800/60">
+                              <p className="text-xs text-slate-400 italic">
+                                Due to client agreement, source code and some images are limited.
+                              </p>
+                            </div>
+                          )}
                         </div>
                       </DialogContent>
                     </Dialog>
@@ -547,7 +553,7 @@ export default function Projects() {
                         onClick={() => window.open(project.githubUrl, "_blank")}
                         className="bg-slate-700/50 text-slate-300 border-slate-600 hover:border-slate-500 hover:text-white text-xs sm:text-sm"
                       >
-                        <Github className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                        <LinkIcon className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                         Code
                       </Button>
                     )}
