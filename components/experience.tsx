@@ -109,18 +109,18 @@ export default function Experience() {
   }, [])
 
   return (
-    <section id="experience" className="py-20 bg-slate-900" ref={sectionRef}>
+    <section id="experience" className="py-16 sm:py-20 bg-slate-900" ref={sectionRef}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <h2
-            className={`text-4xl sm:text-5xl font-bold text-center text-white mb-4 transition-all duration-1000 ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-white mb-4 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             Professional Experience
           </h2>
           <p
-            className={`text-slate-400 text-center mb-16 text-lg transition-all duration-1000 delay-200 ${
+            className={`text-slate-400 text-center mb-12 sm:mb-16 text-base sm:text-lg transition-all duration-1000 delay-200 px-4 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
@@ -130,18 +130,18 @@ export default function Experience() {
           <div className="relative">
             {/* Timeline Line */}
             <div
-              className={`absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-slate-500 to-blue-400 transition-all duration-1000 delay-400 ${
+              className={`absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-slate-500 to-blue-400 transition-all duration-1000 delay-400 ${
                 isVisible ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0"
               }`}
               style={{ transformOrigin: "top" }}
             ></div>
 
-            <div className="space-y-12">
+            <div className="space-y-8 sm:space-y-12">
               {experiences.map((exp, index) => (
                 <div key={index} className="relative flex items-start">
                   {/* Timeline Dot */}
                   <div
-                    className={`absolute left-6 w-4 h-4 bg-gradient-to-r from-blue-500 to-slate-500 rounded-full border-4 border-slate-900 shadow-lg shadow-blue-600/50 transition-all duration-500 ${
+                    className={`absolute left-2 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-blue-500 to-slate-500 rounded-full border-2 sm:border-4 border-slate-900 shadow-lg shadow-blue-600/50 transition-all duration-500 ${
                       visibleCards.includes(index) ? "opacity-100 scale-100" : "opacity-0 scale-0"
                     }`}
                     style={{ transitionDelay: `${600 + index * 300}ms` }}
@@ -149,34 +149,34 @@ export default function Experience() {
 
                   {/* Content Card */}
                   <div
-                    className={`ml-20 w-full transition-all duration-700 ${
+                    className={`ml-12 sm:ml-20 w-full transition-all duration-700 ${
                       visibleCards.includes(index) ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
                     }`}
                     style={{ transitionDelay: `${800 + index * 300}ms` }}
                   >
                     <Card className="bg-slate-800/50 border-slate-700 hover:border-slate-600 transition-all duration-300 hover:shadow-xl hover:shadow-blue-600/10 backdrop-blur-sm hover:scale-105">
-                      <CardContent className="p-8">
+                      <CardContent className="p-4 sm:p-6 lg:p-8">
                         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                           <div>
-                            <h3 className="text-2xl font-bold text-white mb-2">{exp.title}</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{exp.title}</h3>
                             <div className="flex items-center text-blue-400 mb-2">
                               <Building className="h-4 w-4 mr-2" />
-                              <span className="font-semibold">{exp.company}</span>
+                              <span className="font-semibold text-sm sm:text-base">{exp.company}</span>
                             </div>
-                            <div className="flex items-center text-slate-400 text-sm">
-                              <Calendar className="h-4 w-4 mr-1" />
+                            <div className="flex items-center text-slate-400 text-xs sm:text-sm">
+                              <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                               {exp.period}
                             </div>
                           </div>
                         </div>
 
-                        <p className="text-slate-300 mb-6 leading-relaxed">{exp.description}</p>
+                        <p className="text-slate-300 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{exp.description}</p>
 
-                        <div className="mb-6">
-                          <h4 className="text-white font-semibold mb-3">Key Achievements:</h4>
-                          <ul className="space-y-2">
+                        <div className="mb-4 sm:mb-6">
+                          <h4 className="text-white font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Key Achievements:</h4>
+                          <ul className="space-y-1 sm:space-y-2">
                             {exp.achievements.map((achievement, achIndex) => (
-                              <li key={achIndex} className="text-slate-300 flex items-start">
+                              <li key={achIndex} className="text-slate-300 flex items-start text-xs sm:text-sm">
                                 <span className="text-blue-400 mr-2 mt-1">▸</span>
                                 {achievement}
                               </li>
@@ -185,13 +185,13 @@ export default function Experience() {
                         </div>
 
                         <div>
-                          <h4 className="text-white font-semibold mb-3">Technologies Used:</h4>
-                          <div className="flex flex-wrap gap-2">
+                          <h4 className="text-white font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Technologies Used:</h4>
+                          <div className="flex flex-wrap gap-1 sm:gap-2">
                             {exp.technologies.map((tech, techIndex) => (
                               <Badge
                                 key={techIndex}
                                 variant="outline"
-                                className="bg-slate-700/50 text-slate-300 border-slate-600 hover:border-slate-500 hover:scale-105 transition-all duration-200"
+                                className="bg-slate-700/50 text-slate-300 border-slate-600 hover:border-slate-500 hover:scale-105 transition-all duration-200 text-xs"
                               >
                                 {tech}
                               </Badge>

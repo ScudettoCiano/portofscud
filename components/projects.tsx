@@ -372,40 +372,41 @@ export default function Projects() {
   }, [projects.length]);
 
   return (
-    <section id="projects" className="py-20 bg-slate-900" ref={sectionRef}>
+    <section id="projects" className="py-16 sm:py-20 bg-slate-900" ref={sectionRef}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h2
-            className={`text-4xl sm:text-5xl font-bold text-center text-white mb-4 transition-all duration-1000 ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-white mb-4 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            Projects
+            Featured Projects
           </h2>
           <p
-            className={`text-slate-400 text-center mb-12 text-lg transition-all duration-1000 delay-200 ${
+            className={`text-slate-400 text-center mb-12 sm:mb-16 text-base sm:text-lg transition-all duration-1000 delay-200 px-4 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            Showcasing my technical projects and creative solutions
+            A showcase of my work and technical expertise
           </p>
 
           {/* Filter Buttons */}
           <div
-            className={`flex flex-wrap justify-center gap-4 mb-16 transition-all duration-1000 delay-400 ${
+            className={`flex flex-wrap justify-center gap-2 sm:gap-3 mb-12 transition-all duration-1000 delay-400 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            {filters.map((filter) => (
+            {["All", "Data Scientist", "Data Analyst", "Developer", "ML Engineer"].map((filter) => (
               <Button
                 key={filter}
-                onClick={() => setActiveFilter(filter)}
                 variant={activeFilter === filter ? "default" : "outline"}
-                className={`px-6 py-2 transition-all duration-300 transform hover:scale-105 ${
+                size="sm"
+                onClick={() => setActiveFilter(filter)}
+                className={`text-xs sm:text-sm px-3 sm:px-4 py-2 ${
                   activeFilter === filter
-                    ? "bg-blue-600 hover:bg-blue-700 text-white"
-                    : "bg-slate-800/50 text-slate-300 border-slate-600 hover:bg-slate-700/50 hover:border-slate-500"
-                }`}
+                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0"
+                    : "bg-slate-800/50 text-slate-300 border-slate-600 hover:border-slate-500 hover:text-white"
+                } transition-all duration-300`}
               >
                 {filter}
               </Button>
@@ -413,154 +414,140 @@ export default function Projects() {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 transition-all duration-1000 delay-600 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
             {filteredProjects.map((project, index) => (
               <Card
-                key={`${activeFilter}-${index}`}
-                className={`bg-slate-800/50 border-slate-700 hover:border-slate-600 transition-all duration-700 hover:shadow-xl hover:shadow-blue-600/20 backdrop-blur-sm group overflow-hidden hover:scale-105 ${
-                  visibleProjects.includes(index) || !isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                key={index}
+                className={`bg-slate-800/50 border-slate-700 hover:border-slate-600 transition-all duration-500 hover:shadow-xl hover:shadow-blue-600/10 backdrop-blur-sm hover:scale-105 group cursor-pointer ${
+                  visibleProjects.includes(index) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
+                style={{ transitionDelay: `${800 + index * 200}ms` }}
               >
-                <CardHeader className="p-0 relative">
-                  <div className="relative overflow-hidden">
+                <CardHeader className="p-4 sm:p-6">
+                  <div className="relative overflow-hidden rounded-lg mb-4">
                     <img
-                      src={
-                        project.images
-                          ? project.images[cardImageIndexes[index] % project.images.length]
-                          : (project.image || "/placeholder.svg")
-                      }
+                      src={project.image}
                       alt={project.title}
-                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                    <Badge className="absolute top-4 left-4 bg-blue-600/90 text-white border-0 transition-all duration-300 group-hover:scale-110">
-                      {Array.isArray(project.category) ? project.category.join(", ") : project.category}
-                    </Badge>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-slate-300 mb-4 leading-relaxed text-sm line-clamp-3">{project.description}</p>
-
-                  <div className="flex flex-wrap gap-1 mb-6">
-                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
+                    {project.technologies.slice(0, 4).map((tech, techIndex) => (
                       <Badge
                         key={techIndex}
                         variant="outline"
-                        className="bg-slate-700/50 text-slate-300 border-slate-600 text-xs hover:scale-105 transition-transform duration-200"
+                        className="bg-slate-700/50 text-slate-300 border-slate-600 text-xs"
                       >
                         {tech}
                       </Badge>
                     ))}
-                    {project.technologies.length > 3 && (
+                    {project.technologies.length > 4 && (
                       <Badge variant="outline" className="bg-slate-700/50 text-slate-300 border-slate-600 text-xs">
-                        +{project.technologies.length - 3}
+                        +{project.technologies.length - 4}
                       </Badge>
                     )}
                   </div>
-
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button
-                        size="sm"
-                        className="w-full bg-gradient-to-r from-blue-600 to-slate-600 hover:from-blue-700 hover:to-slate-700 transition-all duration-300 transform hover:scale-105"
-                      >
-                        View Details
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-slate-800 border-slate-700">
-                      <DialogHeader>
-                        <DialogTitle className="text-2xl text-white mb-4">{project.title}</DialogTitle>
-                      </DialogHeader>
-
-                      <div className="space-y-6">
-                        {/* Project Images with navigation */}
-                        {project.images && project.images.length > 1 ? (
+                </CardHeader>
+                <CardContent className="p-4 sm:p-6 pt-0">
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="flex-1 bg-slate-700/50 text-slate-300 border-slate-600 hover:border-slate-500 hover:text-white text-xs sm:text-sm"
+                        >
+                          <LinkIcon className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                          View Details
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-slate-800 border-slate-700">
+                        <DialogHeader>
+                          <DialogTitle className="text-xl sm:text-2xl font-bold text-white">
+                            {project.title}
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-6">
                           <ProjectImageCarousel images={project.images} title={project.title} />
-                        ) : (
-                          <div className="relative">
-                            <img
-                              src={project.images ? project.images[0] : (project.image || "/placeholder.svg")}
-                              alt={project.title}
-                              className="w-full h-[28rem] object-cover rounded-lg"
-                            />
-                            <Badge className="absolute top-4 left-4 bg-blue-600 text-white">{Array.isArray(project.category) ? project.category.join(", ") : project.category}</Badge>
+                          <div>
+                            <h4 className="text-white font-semibold mb-3 text-sm sm:text-base">Description</h4>
+                            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                              {project.fullDescription}
+                            </p>
                           </div>
-                        )}
-
-                        {/* Full Description */}
-                        <div>
-                          <h4 className="text-lg font-semibold text-white mb-3">Project Overview</h4>
-                          <p className="text-slate-300 leading-relaxed">{project.fullDescription}</p>
-                        </div>
-
-                        {/* Technologies */}
-                        <div>
-                          <h4 className="text-lg font-semibold text-white mb-3">Technologies Used</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {project.technologies.map((tech, techIndex) => (
-                              <Badge
-                                key={techIndex}
-                                variant="outline"
-                                className="bg-slate-700/50 text-slate-300 border-slate-600"
+                          <div>
+                            <h4 className="text-white font-semibold mb-3 text-sm sm:text-base">Challenges</h4>
+                            <ul className="space-y-2">
+                              {project.challenges.map((challenge, chIndex) => (
+                                <li key={chIndex} className="text-slate-300 flex items-start text-xs sm:text-sm">
+                                  <span className="text-blue-400 mr-2 mt-1">▸</span>
+                                  {challenge}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 className="text-white font-semibold mb-3 text-sm sm:text-base">Outcomes</h4>
+                            <ul className="space-y-2">
+                              {project.outcomes.map((outcome, outIndex) => (
+                                <li key={outIndex} className="text-slate-300 flex items-start text-xs sm:text-sm">
+                                  <span className="text-green-400 mr-2 mt-1">▸</span>
+                                  {outcome}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 className="text-white font-semibold mb-3 text-sm sm:text-base">Technologies</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {project.technologies.map((tech, techIndex) => (
+                                <Badge
+                                  key={techIndex}
+                                  variant="outline"
+                                  className="bg-slate-700/50 text-slate-300 border-slate-600 text-xs"
+                                >
+                                  {tech}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                          {project.githubUrl && (
+                            <div className="flex justify-center">
+                              <Button
+                                onClick={() => window.open(project.githubUrl, "_blank")}
+                                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 text-sm sm:text-base"
                               >
-                                {tech}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Challenges */}
-                        <div>
-                          <h4 className="text-lg font-semibold text-white mb-3">Key Challenges</h4>
-                          <ul className="space-y-2">
-                            {project.challenges.map((challenge, index) => (
-                              <li key={index} className="text-slate-300 flex items-start">
-                                <span className="text-blue-400 mr-2 mt-1">▸</span>
-                                {challenge}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Outcomes */}
-                        <div>
-                          <h4 className="text-lg font-semibold text-white mb-3">Key Outcomes</h4>
-                          <ul className="space-y-2">
-                            {project.outcomes.map((outcome, index) => (
-                              <li key={index} className="text-slate-300 flex items-start">
-                                <span className="text-green-400 mr-2 mt-1">✓</span>
-                                {outcome}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Action Buttons */}
-                        <div className="flex gap-4 pt-4 border-t border-slate-700">
-                          {project.githubUrl ? (
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="bg-slate-700/50 text-slate-300 border-slate-600 hover:bg-slate-600/50 transition-all duration-300 hover:scale-105"
-                              asChild
-                            >
-                              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                                <LinkIcon className="h-4 w-4 mr-2" />
-                                View Code
-                              </a>
-                            </Button>
-                          ) : (
-                            <div className="text-xs text-slate-400 italic py-2 px-3 border border-slate-700 rounded bg-slate-800/60">
-                              Due to client agreement, source code and some images are limited.
+                                <Github className="mr-2 h-4 w-4" />
+                                View Project
+                              </Button>
                             </div>
                           )}
                         </div>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                      </DialogContent>
+                    </Dialog>
+                    {project.githubUrl && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => window.open(project.githubUrl, "_blank")}
+                        className="bg-slate-700/50 text-slate-300 border-slate-600 hover:border-slate-500 hover:text-white text-xs sm:text-sm"
+                      >
+                        <Github className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                        Code
+                      </Button>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             ))}

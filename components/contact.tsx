@@ -106,46 +106,46 @@ export default function Contact() {
   }, [])
 
   return (
-    <section id="contact" className="py-20 bg-slate-800 relative overflow-hidden" ref={sectionRef}>
+    <section id="contact" className="py-16 sm:py-20 bg-slate-800 relative overflow-hidden" ref={sectionRef}>
       {/* Animated background blob */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[350px] bg-gradient-to-r from-blue-700/10 via-cyan-400/15 to-blue-900/10 rounded-full blur-3xl animate-pulse z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[900px] h-[200px] sm:h-[350px] bg-gradient-to-r from-blue-700/10 via-cyan-400/15 to-blue-900/10 rounded-full blur-3xl animate-pulse z-0" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2
-            className={`text-4xl sm:text-5xl font-bold text-center text-white mb-4 transition-all duration-1000 ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-white mb-4 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             Get In Touch
           </h2>
           <p
-            className={`text-slate-400 text-center mb-16 text-lg transition-all duration-1000 delay-200 ${
+            className={`text-slate-400 text-center mb-12 sm:mb-16 text-base sm:text-lg transition-all duration-1000 delay-200 px-4 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             Ready to collaborate on exciting projects? Let's connect!
           </p>
 
-          <div className="grid lg:grid-cols-3 gap-12">
+          <div className="grid lg:grid-cols-3 gap-8 sm:gap-12">
             {/* Contact Info */}
             <div
-              className={`lg:col-span-1 space-y-8 transition-all duration-1000 delay-400 ${
+              className={`lg:col-span-1 space-y-6 sm:space-y-8 transition-all duration-1000 delay-400 ${
                 isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
               }`}
             >
               <div>
-                <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                  <MessageCircle className="h-6 w-6 text-blue-400 mr-3" />
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center">
+                  <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400 mr-2 sm:mr-3" />
                   Let's Connect
                 </h3>
-                <p className="text-slate-300 mb-8 leading-relaxed">
+                <p className="text-slate-300 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
                   I'm always excited to discuss new opportunities, collaborate on interesting projects, or just have a
                   conversation about technology and innovation. Whether you're a recruiter, potential collaborator, or
                   fellow tech enthusiast, I'd love to hear from you!
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {contactInfo.map((info, index) => (
                   <Card
                     key={index}
@@ -154,28 +154,28 @@ export default function Contact() {
                     }`}
                     style={{ transitionDelay: `${600 + index * 200}ms` }}
                   >
-                    <CardContent className="p-6">
+                    <CardContent className="p-4 sm:p-6">
                       <div className="flex items-start">
                         <div
-                          className={`p-3 rounded-lg bg-gradient-to-r ${info.color} mr-4 flex-shrink-0 hover:scale-110 transition-transform duration-300`}
+                          className={`p-2 sm:p-3 rounded-lg bg-gradient-to-r ${info.color} mr-3 sm:mr-4 flex-shrink-0 hover:scale-110 transition-transform duration-300`}
                         >
-                          <info.icon className="h-5 w-5 text-white" />
+                          <info.icon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                         </div>
                         <div className="flex-1">
-                          <h4 className="text-white font-semibold mb-1">{info.title}</h4>
+                          <h4 className="text-white font-semibold mb-1 text-sm sm:text-base">{info.title}</h4>
                           {info.href ? (
                             <a
                               href={info.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-blue-400 font-medium mb-1 hover:text-blue-300 transition-colors duration-300 block"
+                              className="text-blue-400 font-medium mb-1 hover:text-blue-300 transition-colors duration-300 block text-sm sm:text-base"
                             >
                               {info.value}
                             </a>
                           ) : (
-                            <p className="text-blue-400 font-medium mb-1">{info.value}</p>
+                            <p className="text-blue-400 font-medium mb-1 text-sm sm:text-base">{info.value}</p>
                           )}
-                          <p className="text-slate-400 text-sm">{info.description}</p>
+                          <p className="text-slate-400 text-xs sm:text-sm">{info.description}</p>
                         </div>
                       </div>
                     </CardContent>
@@ -191,12 +191,12 @@ export default function Contact() {
               }`}
             >
               <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:scale-105 transition-transform duration-500">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-white flex items-center">
-                    <Send className="h-6 w-6 text-blue-400 mr-3" />
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="text-xl sm:text-2xl text-white flex items-center">
+                    <Send className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400 mr-2 sm:mr-3" />
                     Send me a message
                   </CardTitle>
-                  <p className="text-slate-400">Fill out the form below and I'll get back to you within 24 hours.</p>
+                  <p className="text-slate-400 text-sm sm:text-base">Fill out the form below and I'll get back to you within 24 hours.</p>
                 </CardHeader>
                 <CardContent className="p-8">
                   <form onSubmit={handleSubmit} className="space-y-6">

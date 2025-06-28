@@ -67,20 +67,20 @@ export default function Skills() {
   }, [])
 
   return (
-    <section id="skills" className="py-20 bg-slate-800 relative overflow-hidden" ref={sectionRef}>
+    <section id="skills" className="py-16 sm:py-20 bg-slate-800 relative overflow-hidden" ref={sectionRef}>
       {/* Animated background blob */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[350px] bg-gradient-to-r from-blue-700/30 via-cyan-400/20 to-blue-900/30 rounded-full blur-3xl animate-pulse z-0" />
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[400px] sm:w-[900px] h-[200px] sm:h-[350px] bg-gradient-to-r from-blue-700/30 via-cyan-400/20 to-blue-900/30 rounded-full blur-3xl animate-pulse z-0" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <h2
-            className={`text-4xl sm:text-5xl font-bold text-center text-white mb-4 transition-all duration-1000 ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-white mb-4 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             Technologies & Tools
           </h2>
           <p
-            className={`text-slate-400 text-center mb-16 text-lg transition-all duration-1000 delay-200 ${
+            className={`text-slate-400 text-center mb-12 sm:mb-16 text-base sm:text-lg transition-all duration-1000 delay-200 px-4 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
@@ -88,12 +88,12 @@ export default function Skills() {
           </p>
 
           {/* Marquee/Infinite scroll area */}
-          <div className="overflow-hidden w-full relative" style={{paddingBottom: '24px'}}>
+          <div className="overflow-hidden w-full relative" style={{paddingBottom: '20px'}}>
             <div
-              className="marquee-row flex gap-6"
+              className="marquee-row flex gap-4 sm:gap-6"
               style={{
                 animation: 'marqueeX 48s linear infinite',
-                height: '110px',
+                height: '90px sm:110px',
               }}
               onMouseEnter={e => (e.currentTarget.style.animationPlayState = 'paused')}
               onMouseLeave={e => (e.currentTarget.style.animationPlayState = 'running')}
@@ -102,12 +102,12 @@ export default function Skills() {
                 <Card
                   key={tech.name + techIndex}
                   className={
-                    `bg-slate-700/50 border border-slate-600 transition-all duration-500 shadow-xl shadow-blue-600/20 backdrop-blur-sm group cursor-pointer min-w-[120px] animate-float-on-hover`
+                    `bg-slate-700/50 border border-slate-600 transition-all duration-500 shadow-xl shadow-blue-600/20 backdrop-blur-sm group cursor-pointer min-w-[100px] sm:min-w-[120px] animate-float-on-hover`
                   }
                   style={{borderWidth: '2px'}}
                 >
-                  <CardContent className="p-4 flex flex-col items-center justify-center h-24">
-                    <span className="text-slate-300 font-medium text-xs text-center group-hover:text-white transition-colors duration-300">
+                  <CardContent className="p-3 sm:p-4 flex flex-col items-center justify-center h-20 sm:h-24">
+                    <span className="text-slate-300 font-medium text-xs text-center group-hover:text-white transition-colors duration-300 leading-tight">
                       {tech.name}
                     </span>
                   </CardContent>
@@ -132,6 +132,11 @@ export default function Skills() {
         }
         .marquee-row {
           width: max-content;
+        }
+        @media (max-width: 640px) {
+          .marquee-row {
+            animation-duration: 30s !important;
+          }
         }
       `}</style>
     </section>
