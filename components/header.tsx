@@ -35,7 +35,7 @@ export default function Header() {
             onClick={() => handleNavClick("#home")}
             className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
           >
-            Portfolio
+            Scud's Portfolio
           </button>
 
           {/* Desktop Navigation */}

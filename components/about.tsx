@@ -4,7 +4,15 @@ import { useEffect, useRef, useState } from "react"
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false)
+  const [showEmojis, setShowEmojis] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+
+  const handleSayHi = () => {
+    setShowEmojis(true)
+    setTimeout(() => {
+      setShowEmojis(false)
+    }, 3000) // Emojis disappear after 3 seconds
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -56,11 +64,35 @@ export default function About() {
               }`}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-slate-600/20 rounded-2xl blur-xl"></div>
-              <img
-                src="/placeholder.svg?height=500&width=500"
-                alt="About me"
-                className="relative rounded-2xl shadow-2xl w-full border border-slate-700 transform hover:scale-105 transition-transform duration-500"
-              />
+              <div className="relative max-w-sm mx-auto">
+                {/* Say Hi Button */}
+                <button
+                  onClick={handleSayHi}
+                  className="absolute -bottom-4 -right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-full shadow-lg hover:scale-105 transition-all duration-300 z-10 font-medium"
+                >
+                  Say Hi! 👋
+                </button>
+
+                {/* Animated emoji decorations */}
+                {showEmojis && (
+                  <>
+                    <div className="absolute -bottom-12 -right-8 text-4xl animate-float-up z-20">
+                      😊
+                    </div>
+                    <div className="absolute -bottom-12 -right-2 text-4xl animate-float-up z-20">
+                      👋
+                    </div>
+                  </>
+                )}
+                
+                <div className="relative p-4 bg-gradient-to-r from-slate-700 to-slate-600 rounded-3xl shadow-2xl">
+                  <img
+                    src="/profile.jpg"
+                    alt="Scudetto Ciano Syam"
+                    className="relative rounded-2xl shadow-xl w-full transform hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
             </div>
 
             <div
@@ -85,6 +117,22 @@ export default function About() {
           </div>
         </div>
       </div>
+      {/* Custom CSS for float-up animation */}
+      <style jsx>{`
+        @keyframes float-up {
+          0% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(-100px);
+            opacity: 0;
+          }
+        }
+        .animate-float-up {
+          animation: float-up 3s ease-out forwards;
+        }
+      `}</style>
     </section>
   )
 }

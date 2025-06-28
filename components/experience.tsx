@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Building, Calendar, MapPin } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Building, Calendar, MapPin, Award } from "lucide-react"
 
 export default function Experience() {
   const [isVisible, setIsVisible] = useState(false)
@@ -197,6 +198,67 @@ export default function Experience() {
                             ))}
                           </div>
                         </div>
+
+                        {/* Credential Button for specific experiences */}
+                        {exp.company === "PT. Madhava Persada Group" && (
+                          <div className="mt-6 pt-4 border-t border-slate-700">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="bg-slate-700/50 text-slate-300 border-slate-600 hover:bg-slate-600/50 transition-all duration-300 hover:scale-105"
+                              asChild
+                            >
+                              <a 
+                                href="https://drive.google.com/file/d/1MYWoyq-X1GPNWLK9KYCnUTUQ8bgPPNjn/view?usp=sharing" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                              >
+                                <Award className="h-4 w-4 mr-2" />
+                                View Credential
+                              </a>
+                            </Button>
+                          </div>
+                        )}
+
+                        {exp.company === "ID/X Partners Project Based Internship" && (
+                          <div className="mt-6 pt-4 border-t border-slate-700">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="bg-slate-700/50 text-slate-300 border-slate-600 hover:bg-slate-600/50 transition-all duration-300 hover:scale-105"
+                              asChild
+                            >
+                              <a 
+                                href="https://drive.google.com/file/d/1FmZpWfGiGOkBXMMSJq5u8zNTieLbZVZ-/view?usp=sharing" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                              >
+                                <Award className="h-4 w-4 mr-2" />
+                                View Credential
+                              </a>
+                            </Button>
+                          </div>
+                        )}
+
+                        {exp.company === "Digital Skola" && (
+                          <div className="mt-6 pt-4 border-t border-slate-700">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="bg-slate-700/50 text-slate-300 border-slate-600 hover:bg-slate-600/50 transition-all duration-300 hover:scale-105"
+                              asChild
+                            >
+                              <a 
+                                href="https://drive.google.com/file/d/1EhIEW78MS0XyVTafA-SXbkRom5EAvc1w/view?usp=sharing" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                              >
+                                <Award className="h-4 w-4 mr-2" />
+                                View Credential
+                              </a>
+                            </Button>
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   </div>
