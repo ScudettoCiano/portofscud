@@ -430,7 +430,11 @@ export default function Projects() {
                 <CardHeader className="p-4 sm:p-6">
                   <div className="relative overflow-hidden rounded-lg mb-4">
                     <img
-                      src={project.image}
+                      src={
+                        project.images
+                          ? project.images[cardImageIndexes[index] % project.images.length]
+                          : (project.image || "/placeholder.svg")
+                      }
                       alt={project.title}
                       className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
