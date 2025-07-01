@@ -101,9 +101,10 @@ export default function About() {
               }`}
             >
               <div className="space-y-6">
-                <p className="text-lg text-slate-300 leading-relaxed">
-                  As an <span className="text-blue-400 font-semibold">Information Systems</span> student at <span className="text-blue-400 font-semibold">Universitas Indonesia</span>, I have built a solid foundation in <span className="text-blue-400 font-semibold">data analytics</span> and <span className="text-blue-400 font-semibold">data science</span> through various challenging practical experiences. My curiosity naturally drives me to explore beyond classroom learning, constantly seeking opportunities to apply analytical concepts in meaningful ways that create tangible impact for organizations and communities.
-                </p>
+              <p className="text-lg text-slate-300 leading-relaxed">
+  As a <span className="text-blue-400 font-semibold">third-year Information Systems</span> student at <span className="text-blue-400 font-semibold">Universitas Indonesia</span>, I have built a solid foundation in <span className="text-blue-400 font-semibold">data analytics</span> and <span className="text-blue-400 font-semibold">data science</span> through various challenging practical experiences. My curiosity naturally drives me to explore beyond classroom learning, constantly seeking opportunities to apply analytical concepts in meaningful ways that create tangible impact for organizations and communities.
+</p>
+
                 <p className="text-lg text-slate-300 leading-relaxed">
                   What sets me apart is my ability to see the <span className="text-blue-400 font-semibold">big picture</span> while remaining detail-oriented in execution. I believe that working effectively with data requires not just technical proficiency, but also the ability to understand <span className="text-blue-400 font-semibold">business context</span>, ask the right questions, and communicate findings in compelling ways. With a strong <span className="text-blue-400 font-semibold">growth mindset</span> and deep interest in the intersection of <span className="text-blue-400 font-semibold">technology</span> and <span className="text-blue-400 font-semibold">business</span>, I'm ready to contribute toward creating measurable impact through data-driven insights across various roles in the data field.
                 </p>
