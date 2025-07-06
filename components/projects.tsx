@@ -11,7 +11,7 @@ const projects = [
   {
     title: "FIFA World Cup Historical Analytics Dashboard",
     description:
-      "Comprehensive interactive dashboard analyzing FIFA World Cup data from 1930-2014, featuring tournament statistics, team performance metrics, and global attendance patterns using advanced data visualization techniques.",
+      "Comprehensive interactive dashboard analyzing FIFA World Cup data from 1930-2014, featuring tournament statistics, team performance metrics, and global attendance patterns using various data visualization techniques.",
     fullDescription:
       `This sports analytics project was developed to provide comprehensive insights into FIFA World Cup tournaments spanning from 1930 to 2014. The dashboard features multiple analytical dimensions including tournament winners and host countries, team performance statistics, attendance analytics by country and year, and global participation patterns. I implemented advanced data visualization techniques using a professional Brazil theme with football-inspired color palette to create an engaging user experience. The dashboard includes six main analytical sections: Countries with World Cup victories showing Brazil's dominance with 5 titles, Teams with most finals and semi-finals appearances highlighting consistent performers, Host countries and tournament results demonstrating home advantage patterns, Countries serving as World Cup hosts with frequency analysis, Teams eliminated in group stages showing early exit patterns, and Global attendance visualization using interactive maps with color-coded intensity based on audience numbers. I overcame significant data processing challenges including cleaning and standardizing year data for proper temporal analysis, and implementing responsive design principles for optimal viewing across different screen sizes.`,
     image: "/project/wc_db.jpg",
@@ -33,7 +33,7 @@ const projects = [
     ],
   },
   {
-    title: "Extensive ML Coursework Project",
+    title: "Employee Analytics ML Coursework Project",
     description:
       "End-to-end machine learning project for employee churn classification, employee income regression, and segmentation clustering. Achieved top ranks in faculty Kaggle competitions.",
     fullDescription:
